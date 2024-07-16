@@ -1,0 +1,1 @@
+pip install PyOpenGL3.17_py312_amd64.whl PyOpenGL_accelerate3.17_py312_amd64.whl
