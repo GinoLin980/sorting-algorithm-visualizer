@@ -1,4 +1,5 @@
 import time
+import sys; sys.dont_write_bytecode = True
 import pygame
 from OpenGL.GL import *
 
@@ -16,7 +17,8 @@ class SortingAlgorithms:
         self.n = len(self.lst)
         self.bar_width = self.width / self.n
         self.height_unit = self.height / max(self.lst)
-        self.draw = self.draw_bar if not USE_GL else self.draw_bar_GL
+        self.USE_GL = USE_GL
+        self.draw = self.draw_bar if not self.USE_GL else self.draw_bar_GL
 
     def draw_bar(self, index, value, color):
         rect = pygame.Rect(index * self.bar_width, self.height - value * self.height_unit, self.bar_width - self.margin, value * self.height_unit)
@@ -71,9 +73,26 @@ class SortingAlgorithms:
             self.draw(high, pivot, self.bar_color)
         self.swap_bars(i + 1, high)
         return i + 1
+    
+    def GL_partition(self, low, high):
+        i = (low-1)
+        pivot = self.lst[high]
+
+        for j in range(low, high):
+            if self.lst[j] <= pivot:
+                i = i+1
+                self.lst[i], self.lst[j] = self.lst[j], self.lst[i]
+                glClear(GL_COLOR_BUFFER_BIT)
+                for k, value in enumerate(self.lst):
+                    color = self.compare_color if k == i or k == j else self.bar_color
+                    self.draw(k, value, color)
+                pygame.display.flip()
+                pygame.time.wait(0)
+        self.lst[i+1], self.lst[high] = self.lst[high], self.lst[i+1]
+        return (i+1)
 
     def quick_sort(self, low, high):
         if low < high:
-            pi = self.partition(low, high)
+            pi = self.partition(low, high) if not self.USE_GL else self.GL_partition(low, high)
             self.quick_sort(low, pi - 1)
             self.quick_sort(pi + 1, high)

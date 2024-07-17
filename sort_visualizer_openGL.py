@@ -1,11 +1,20 @@
 import pygame
-import sys
+import sys; sys.dont_write_bytecode = True
 import time
 import numpy as np
 from OpenGL.GL import *
-from OpenGL.GLU import *
 from pygame.locals import *
 from sorting_algorithms import SortingAlgorithms
+
+available_algo = ["bubble_sort", "quick_sort"]
+
+if len(sys.argv) != 2:
+    print(f"\nUsage: python3 sort_visualizer_OpenGL.py {' or '.join(available_algo)}\n")
+    sys.exit(1)
+
+sort_algorithm = sys.argv[1].lower()
+
+assert sort_algorithm in available_algo, f"\nThis {sort_algorithm} is not available now\nPlease choose from {','.join(available_algo)}\n"
 
 # Initialize Pygame
 pygame.init()
@@ -46,7 +55,7 @@ def draw_bar(index: int, value: float | int, color: tuple[float]) -> None: # 左
     glVertex2f(BAR_WIDTH * index, HEIGHT_UNIT * value)
     glEnd()
 
-GO FIX THE BUBBLE SORT DISPLAY ISSUE
+# GO FIX THE BUBBLE SORT DISPLAY ISSUE
 
 
 def init_bar(arr):
@@ -115,14 +124,26 @@ init_bar(ARR)
 pygame.display.flip()
 sortAlgo = SortingAlgorithms(ARR, screen, WIDTH, HEIGHT, MARGIN, BAR_COLOR, COMPARE_COLOR, (0, 0, 0), 0, True)
 running = True
+
+if sort_algorithm == "quick_sort":
+        action = sortAlgo.quick_sort
+        params = (0, N-1)
+elif sort_algorithm == "bubble_sort":
+    sortAlgo.bubble_sort
+    params = None
+else:
+    print("Invalid sorting algorithm. Choose 'quicksort' or 'bubblesort'.")
+    running = False
+
 while running:
     for event in pygame.event.get():
         if event.type == QUIT:
             running = False
 
     # quick_sort(ARR, 0, N-1)
-    bubble_sort(ARR)
-    # sortAlgo.quick_sort(0, N-1)
+    # bubble_sort(ARR)
+    # quick_sort(ARR, 0, N-1)
+    action(param for param in params)
 
     if np.array_equal(ARR, np.sort(ARR)):
         time.sleep(3)
