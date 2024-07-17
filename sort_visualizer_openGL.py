@@ -98,7 +98,7 @@ def partition(arr, low, high):
             pygame.display.flip()
             pygame.time.wait(0)
     arr[i+1], arr[high] = arr[high], arr[i+1]
-    return (i+1)
+    return i+1
 
 
 def quick_sort(arr, low, high):
