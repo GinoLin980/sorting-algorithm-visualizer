@@ -6,23 +6,13 @@ This is a sorting algorithm visulizer made with Pygame and OpenGL.
 
 ## Prerequisites
 
-This program needs `Pygame` and `OpenGL`(optional)
-
-run this if you use Pygame version only:
+This program needs `Pygame`, `numpy`, and `PyOpenGL`
 
 ```bash
-pip install pygame
+pip install pygame numpy pyopengl pyopengl-accelerate
 ```
 
-run this if you use OpenGL included version:
-
-```bash
-pip install -r requirements.txt
-```
-
-This will install `pygame`, `pyopengl` and `pyopengl-accelerate`
-
-If you're using other system or this doesn't work, run
+If your `PyOpenGL` or `PyOpenGL-accelerate` installation failed, run
 
 ```bash
 git clone https://github.com/mcfletch/pyopengl.git
