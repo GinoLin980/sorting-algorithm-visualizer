@@ -25,6 +25,7 @@ This will install `pygame`, `pyopengl` and `pyopengl-accelerate`
 If you're using other system or this doesn't work, run
 
 ```bash
+git clone https://github.com/mcfletch/pyopengl.git
 cd pyopengl
 pip install -e .
 cd accelerate
