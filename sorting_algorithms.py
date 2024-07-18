@@ -1,10 +1,13 @@
 import time
 import sys; sys.dont_write_bytecode = True
+import numpy
 import pygame
 from OpenGL.GL import *
 
+
 class SortingAlgorithms:
-    def __init__(self, arr: list[int], screen: pygame.Surface, width: int, height: int, margin: float, bar_color: tuple[float], compare_color: tuple[float], bg_color: tuple[float], wait_time: float):
+    def __init__(self, arr: numpy.ndarray, screen: pygame.Surface, width: int, height: int, margin: float,
+                 bar_color: tuple[float], compare_color: tuple[float], bg_color: tuple[float], wait_time: float):
         self.arr = arr
         self.screen = screen
         self.width = width
@@ -23,8 +26,8 @@ class SortingAlgorithms:
         glColor3f(*color)
         glBegin(GL_QUADS)
         glVertex2f(self.bar_width * index, 0)
-        glVertex2f(self.bar_width * (index+1) - self.margin, 0)
-        glVertex2f(self.bar_width * (index+1) - self.margin, self.height_unit * value)
+        glVertex2f(self.bar_width * (index + 1) - self.margin, 0)
+        glVertex2f(self.bar_width * (index + 1) - self.margin, self.height_unit * value)
         glVertex2f(self.bar_width * index, self.height_unit * value)
         glEnd()
 
@@ -76,7 +79,7 @@ class SortingAlgorithms:
         for j in range(low, high):
             self.check_quit()
             if self.arr[j] <= pivot:
-                i = i+1
+                i = i + 1
                 self.arr[i], self.arr[j] = self.arr[j], self.arr[i]
                 glClear(GL_COLOR_BUFFER_BIT)
                 for k, value in enumerate(self.arr):
@@ -84,7 +87,7 @@ class SortingAlgorithms:
                     self.draw_bar(k, value, color)
                 pygame.display.flip()
                 pygame.time.wait(0)
-        self.arr[i+1], self.arr[high] = self.arr[high], self.arr[i+1]
+        self.arr[i + 1], self.arr[high] = self.arr[high], self.arr[i + 1]
         return i + 1
 
     def quick_sort(self, low: int, high: int):
