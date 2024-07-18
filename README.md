@@ -20,12 +20,11 @@ run this if you use OpenGL included version:
 pip install -r requirements.txt
 ```
 
-This will install `PyOpenGL-3.1.7-cp312-cp312-win_amd64` which is for PyOpenGL 3.17 for x86 Windows with Python 3.12
+This will install `pygame`, `pyopengl` and `pyopengl-accelerate`
 
 If you're using other system or this doesn't work, run
 
 ```bash
-git clone https://github.com/mcfletch/pyopengl.git
 cd pyopengl
 pip install -e .
 cd accelerate
@@ -44,6 +43,6 @@ The current available algorithms are:
 To run this program, type 
 
 ```bash
-python sort_visualizer_openGL.py sort_algo
+python sort_visualizer.py sort_algo
 ```
 
