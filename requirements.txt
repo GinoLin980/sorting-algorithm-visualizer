@@ -1,3 +1,5 @@
 pygame
-pyopengl
-pyopengl-accelerate
+numpy
+customtkinter
+-e git+https://github.com/mcfletch/pyopengl.git@41105583e27264f8e01fb0b711ca8e44ac444f56#egg=PyOpenGL
+-e git+https://github.com/mcfletch/pyopengl.git@41105583e27264f8e01fb0b711ca8e44ac444f56#egg=PyOpenGL_accelerate&subdirectory=accelerate

@@ -1,25 +1,15 @@
 # sorting-algorithm-visualizer
 
-This is a sorting algorithm visulizer made with Pygame and OpenGL.
+This is a easy-to-use sorting algorithm visulizer with GUI made with Pygame and OpenGL.
 
 ---
 
 ## Prerequisites
 
-This program needs `Pygame`, `numpy`, and `PyOpenGL`
+This program needs `Pygame`, `Numpy`, `CustomTkinter` and `PyOpenGL`
 
 ```bash
-pip install pygame numpy pyopengl pyopengl-accelerate
-```
-
-If your `PyOpenGL` or `PyOpenGL-accelerate` installation failed, run
-
-```bash
-git clone https://github.com/mcfletch/pyopengl.git
-cd pyopengl
-pip install -e .
-cd accelerate
-pip install -e .
+pip install -r requirements.txt
 ```
 
 ---
@@ -31,9 +21,6 @@ The current available algorithms are:
 | bubble_sort | quick_sort |
 |-------------|------------|
 
-To run this program, type 
-
-```bash
-python sort_visualizer.py sort_algo
-```
+To run this program, run `sort_visualizer.py` and tweak the values you want.
+Then click GO~
 
