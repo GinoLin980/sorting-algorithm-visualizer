@@ -33,6 +33,9 @@ class SortingAlgorithms:
         glEnd()
 
     def swap_bars(self, i: int, j: int) -> None:
+        self.draw_bar(i, self.height, self.bg_color)
+        self.draw_bar(j, self.height, self.bg_color)
+        pygame.display.flip()
         """Draw the value of each other bar."""
         self.arr[i], self.arr[j] = self.arr[j], self.arr[i]
         self.draw_bar(i, self.arr[i], self.bar_color)
@@ -89,6 +92,9 @@ class SortingAlgorithms:
 
         for j in range(low, high):
             self.check_quit()
+            if self.quit:
+                pygame.quit()
+                break
             if self.arr[j] <= pivot:
                 i = i + 1
                 self.arr[i], self.arr[j] = self.arr[j], self.arr[i]
