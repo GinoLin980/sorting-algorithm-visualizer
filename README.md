@@ -2,6 +2,10 @@
 
 This is a easy-to-use sorting algorithm visulizer with GUI made with Pygame and OpenGL.
 
+Now works Perfectly with LINUX
+**AND IT ERRORS IN WINDOWS FOR NO REASON**
+**WINDOWS IS BULLSHIT**
+
 ---
 
 ## Prerequisites
