@@ -38,7 +38,11 @@ while True:
             screen = pygame.display.set_mode((reso(settings["reso"], settings["orient"])), DOUBLEBUF | OPENGL)
             pygame.display.set_caption('Sorting Algorithm Visualizer With Pygame and OpenGL')
             if settings["record_this_sort"] == True:
-                recorder = ScreenRecorder(fps=30, surf=screen)
+                GL_record = pygame.display.get_surface()
+                size = GL_record.get_size()
+                buffer = glReadPixels(0, 0, *size, GL_RGBA, GL_UNSIGNED_BYTE)
+                GL_record_surface = pygame.image.fromstring(buffer, size, "RGBA")
+                recorder = ScreenRecorder(fps=30, surf=GL_record_surface)
                 recorder.start_rec()
 
             # Constants
